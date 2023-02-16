@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Gopher</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="css/style.css">
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+	<link rel="icon" type="image/x-icon" href="images/favicon.ico.png">
+	<!-- fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700;800;900&display=swap"
+		rel="stylesheet">
+	<link rel=”stylesheet” href=”https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css”
+		integrity=”sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh” crossorigin=”anonymous”>
+	<!-- moment link -->
+	<script type="text/JavaScript" src=" https://MomentJS.com/downloads/moment.js"></script>
+	<!-- jquery -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+</head>
+
+<body onload="initIndex()">
+	<main class="main_wrapper">
+		<section class="main_section">
+			<!-- loader -->
+			<div class="main-section-spinner" id="main-loader">
+				<div class="spinner-border loader" role="status">
+					<span class="sr-only"></span>
+				</div>
+			</div>
+			<div class="main_sec_padding">
+				<div class="main_bg main_container_top">
+					<div class="gopher_logo text-center">
+						<img src="images/logo.png" alt="Logo" />
+					</div>
+					<div class="gopher_form">
+						<form>
+							<div class="mb-12">
+								<label for="" class="form-label"></label>
+								<input type="email" class="form-control" id="username" placeholder="Username"
+									aria-describedby="emailHelp">
+							</div>
+							<div class="mb-12">
+								<label for="" class="form-label"></label>
+								<input type="password" class="form-control" placeholder="Password" id="password">
+							</div>
+						</form>
+					</div>
+					<div class="gopher_login_btn mt-4">
+						<div class="row">
+							<div class="col-9 mb-9">
+								<a href="#" class="btn_style" id="loginButton" onclick="userLogin()">Login</a>
+							</div>
+							<div class="col-3 mb-3">
+								<a href="#" class="btn_style" data-bs-toggle="modal"
+									data-bs-target="#modalconnectionBtn"><img src="images/setting.png"
+										alt="setting-icon" width="25" /></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</section>
+	</main>
+
+	<!-- The Modal connection url input-->
+	<div class="modal" id="modalconnectionBtn">
+		<div class="modal-dialog modal_width modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<div class="modal_api">
+						<div class="enter_api">
+							<form>
+								<input type="text" class="form-control" id="inputUrl" placeholder="Enter You API url"
+									aria-describedby="emailHelp">
+							</form>
+							<div class="gopher_pop_btn mt-2">
+								<div class="row col-10 m-auto">
+									<div class="col-6 mb-6">
+										<a href="#" class="btn_style_pop" onclick="urlConnection()">Ok</a>
+									</div>
+									<div class="col-6 mb-6">
+										<a href="#" class="btn_style_pop" data-bs-dismiss="modal">Cancel</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="enter_api_bg">
+							<a href="#" class="contion_url">Connection URL</a>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+
+	<!-- The Modal second Connection Success-->
+	<div class="modal" id="connectionUrl">
+		<div class="modal-dialog modal_width_connection modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<div class="modal_api_connected">
+						<div class="api_connected text-center">
+							<ul class="list_style_connection">
+								<li>You have successfully connected to:</li>
+								<li><b>Gopher database Name:</b> <br> <span id="conDatabase"></span></li>
+								<li><b>URL Connection String: </b> <br><a href="#"><span id="conurlString"></span></a>
+								</li>
+								<li><b>Your Gopher Companion Version is:</b> 1.10</li>
+								<li><b>Your Mobile Phone Version is: </b><span id="mobileVersion"></span></li>
+
+							</ul>
+						</div>
+						<div class="enter_api_okbtn col-5 m-auto text-center">
+							<a href="#" class="contion_url_okbtn" onclick="connectionSuccess()">Ok</a>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+
+	<!-- The Modal second Connection False-->
+	<div class="modal" id="connectionFail">
+		<div class="modal-dialog modal_width_connection modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<div class="modal_api_connected">
+						<div class="api_connected text-center">
+							<ul class="list_style_connection">
+								<li>Your attempted connection to a Gopher Database with Gopher Companion has failed.
+									Probable causes are:</li>
+								<li>
+									<ul class="connection_invalid">
+										<li><b>1)</b> Connecting string is invalid</li>
+										<li><b>2)</b> Your user credentials are invalid</li>
+										<li><b>3)</b> Your internet connection has failed.</li>
+									</ul>
+								</li>
+								<li><b>You are using Gopher Companion Version: 1.10</b></li>
+								<li class="border_btm"><b>Your Mobile Phone Version is: </b> <span
+										id="conmobileVersion"></span></li>
+
+							</ul>
+						</div>
+						<div class="enter_api_okbtn col-5 m-auto text-center">
+							<a href="#" class="contion_url_okbtn" onclick="connectionFalse()">Ok</a>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+	<!-- The Modal second Login Success-->
+	<div class="modal" id="loginSuccess">
+		<div class="modal-dialog modal_width_connection modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<div class="modal_api_connected">
+						<div class="api_connected text-center">
+							<ul class="list_style_connection">
+								<li>You have successfully logged into:</li>
+								<li><b>User:</b> <span id="userId"></span></li>
+								<li><b>Company:</b> <br> <span id="userCompany"></span></li>
+								<li><b>Gopher database Name:</b> <br> <span id="dbName"></span></li>
+								<li><b>Database Size:</b> <span id="dbSize"></span></li>
+								<li><b>Your Mobile Phone Version is:</b> <span id="logMobile"></span></li>
+
+							</ul>
+						</div>
+						<div class="enter_api_okbtn col-5 m-auto text-center">
+							<a href="#" class="contion_url_okbtn" onclick="logsuccess()">Ok</a>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+
+	<!-- The Modal second login False-->
+	<div class="modal" id="loginFalse">
+		<div class="modal-dialog modal_width_connection modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<div class="modal_api_connected">
+						<div class="api_connected text-center">
+							<ul class="list_style_connection logFail">
+								<li>Your login attempt has failed.</li>
+								<li><b>Probable causes are:</b></li>
+								<li>
+									<ul class="connection_invalid">
+										<li><b>1)</b> Invalid User name</li>
+										<li><b>2)</b> Invalid Password</li>
+										<li><b>3)</b> Failed connection to a Gopher database</li>
+										<li><b>4)</b> No internet connection</li>
+									</ul>
+								</li>
+								<li><b>You are using Gopher Companion Version:</b> 1.10</li>
+								<li class="border_btm"><b>Your Mobile Phone Version is:</b> <span
+										id="logMobileFalse"></span></li>
+
+							</ul>
+						</div>
+						<div class="enter_api_okbtn col-5 m-auto text-center">
+							<a href="#" class="contion_url_okbtn" onclick="logfalse()">Ok</a>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+
+</body>
+
+<script src="./js/index.js"></script>
+
+</html>

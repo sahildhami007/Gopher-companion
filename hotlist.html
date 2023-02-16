@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Gopher</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico.png">
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+    <link rel=”stylesheet” href=”https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css”
+        integrity=”sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh” crossorigin=”anonymous”>
+    <!-- moment link -->
+    <script type="text/JavaScript" src=" https://MomentJS.com/downloads/moment.js"></script>
+    <!-- jquery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+
+<body onload="hotlistAppend(); prj()">
+    <main class="main_wrapper">
+
+        <section class="main_section">
+            <!-- loader -->
+            <div class="main-section-spinner" id="main-loader">
+                <div class="spinner-border loader" role="status">
+                    <span class="sr-only"></span>
+                </div>
+            </div>
+
+            <div class="hotlist_tabs">
+                <div class="position_top">
+                    <h1 class="text-center">Hotlist</h1>
+                    <!-- Tab Nav -->
+                    <div class="nav-wrapper position-relative mb-2 mt-4">
+                        <ul class="nav nav-pills nav-fill flex-column flex-md-row hotlist_nav_pils" id="tabs-text"
+                            role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-text-1-tab" data-bs-toggle="tab"
+                                    href="#tabs-text-1" role="tab" aria-controls="tabs-text-1"
+                                    aria-selected="true">Mobile
+                                    Hotlist</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav_link_2 mb-sm-3 mb-md-0" id="tabs-text-2-tab" data-bs-toggle="tab"
+                                    href="#tabs-text-2" role="tab" aria-controls="tabs-text-2" aria-selected="false">PRJ
+                                    Synced</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End of Tab Nav -->
+                <!-- Tab Content -->
+                <div class="middle_section">
+                    <div class="card border-0 hotlist_card">
+                        <div class="card-body p-0">
+                            <div class="tab-content" id="tabcontent1">
+                                <!-- Hotlist -->
+                                <div class="tab-pane fade show active" id="tabs-text-1" role="tabpanel"
+                                    aria-labelledby="tabs-text-1-tab">
+                                    <ul id="hotlistData">
+                                        <!-- append -->
+                                    </ul>
+                                </div>
+                                <!-- PRJ Synced -->
+                                <div class="tab-pane fade" id="tabs-text-2" role="tabpanel"
+                                    aria-labelledby="tabs-text-2-tab">
+                                    <ul id="prj-ul">
+                                        <!-- append -->
+
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End of Tab Content -->
+
+
+
+            <footer class="gopher_footer">
+                <!-- center box-->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-4 col-sm-4 border-right">
+                            <div class="footer_column text-center">
+                                <a href="search.html">
+                                    <img src="images/search-icon.png" alt="search icon" class="search_icon" />Search
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-4 col-sm-4 border-right">
+                            <div class="footer_column text-center">
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#sortBtn">
+                                    <img src="images/sort-icon.png" alt="sort icon" class="search_icon" />Sort </a>
+                            </div>
+                        </div>
+                        <div class="col-4 col-sm-4 border-right">
+                            <div class="footer_column text-center">
+                                <a href="hotlist.html">
+                                    <img src="images/hotlist-icon.png" alt="hotlist icon" class="search_icon" />Hotlist
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- footer end-->
+            <!-- sign off button -->
+            <div class="sign_off">
+                <a href="#" class="sign_btn" data-bs-toggle="modal" data-bs-target="#signOff">Sign Off</a>
+            </div>
+            <!-- sign off button -->
+
+            <!-- back button -->
+            <div class="back-off">
+                <a href="search.html" class="sign_btn"><i class="fa fa-arrow-left"></i></a>
+            </div>
+            <!-- back button -->
+
+        </section>
+    </main>
+    <!-- The Sign Off -->
+    <div class="modal fade" id="signOff">
+        <div class="modal-dialog modal-dialog modal-dialog-centered modal_sign_popup modal-dialog modal-sm text-center">
+            <div class="modal-content">
+                <!-- Modal body -->
+                <div class="modal_sign_body">
+                    <h2>Warning?</h2>
+                    <p>Are you sure for Logout from<br> Gopher Companion?</p>
+                    <div class="button_add">
+                        <a href="#" onclick="signOff()">Sign Off</a>
+                        <a href="#" data-bs-dismiss="modal">Continue</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Error Modal -->
+    <div class="modal fade" id="errorModal">
+        <div class="modal-dialog modal-dialog modal-dialog-centered modal_sign_popup modal-dialog modal-sm text-center">
+            <div class="modal-content">
+                <!-- Modal body -->
+                <div class="modal_error_body">
+                    <p id="error-msg"></p>
+                    <div class="button_add">
+                        <a href="#" data-bs-dismiss="modal">OK</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script src="./js/index.js"></script>
+
+</html>
