@@ -9,7 +9,7 @@ const searchResult = JSON.parse(localStorage.getItem("searchResult"));
 const loader = document.querySelector("#main-loader");
 let x = 1;
 let loadMore = false;
-if (searchResult) { loadMore = true; }
+// if (searchResult) { loadMore = true; }
 
 const hideSpinner = () => {
     loader.style.display = "none";
