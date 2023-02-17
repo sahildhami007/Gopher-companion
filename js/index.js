@@ -317,6 +317,7 @@ const setHeight = () => {
     let search_topbar = document.getElementById("search_topbar").offsetHeight;
     let middle = main_section - (search_topbar + 10);
     document.getElementById("middle_section").style.height = middle + "px";
+    document.getElementById("middle_section").style.marginTop = search_topbar + "px";
 }
 
 const initLastNote = () => {
@@ -588,6 +589,7 @@ const hotlistAppend = () => {
     let position_top = document.getElementById("position_top").offsetHeight;
     let middle = (main_section - (gopher_footer + 10)) - position_top;
     document.getElementById("middle_section").style.height = middle + "px";
+    document.getElementById("middle_section").style.marginTop = position_top + "px";
 
     hotlistArray?.map(item => {
         const ul = document.getElementById("hotlistData");
@@ -832,6 +834,7 @@ const initSearch = () => {
     let gopher_footer = document.getElementById("gopher_footer").offsetHeight;
     let middle = main_section - (search_topbar + gopher_footer);
     document.getElementById("middleSection").style.height = middle + "px";
+    document.getElementById("middleSection").style.marginTop = search_topbar + "px";
     if (userData) {
         const oldUserList = document.querySelectorAll('#userList');
         for (let i = 0; i < oldUserList?.length; i++) {
