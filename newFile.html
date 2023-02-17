@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Gopher</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico.png">
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+    <!-- jquery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!-- moment link -->
+    <script type="text/JavaScript" src=" https://MomentJS.com/downloads/moment.js"></script>
+    <!-- jquery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+
+<body onload="initProfile()">
+    <main class="main_wrapper">
+        <section class="main_section">
+            <!-- loader -->
+            <div class="main-section-spinner" id="main-loader">
+                <div class="spinner-border loader" role="status">
+                    <span class="sr-only"></span>
+                </div>
+            </div>
+            <div class="search_topbar border_btm">
+                <div class="profile_header  text-center">
+                    <div class="profile_update m-3">
+                        <!-- <img src="images/ds-profile.png" class="profile_icon" alt="Profile" /> -->
+                        <div class="profile_icon">
+                            <div id="name-initials"></div>
+                        </div>
+                        <h1 class="mt-4" id="profullname"></h1>
+                    </div>
+                    <div class="profile_menu">
+                        <div class="row col-10 m-auto mt-3">
+                            <div class="col-3 col-sm-3 profile-icon">
+                                <a href="#" id="procall"><img src="images/call-icon.png" alt="Call Icon" />Call</a>
+                            </div>
+                            <div class="col-3 col-sm-3 profile-icon">
+                                <a href="#" id="promessage"><img src="images/message-icon.png"
+                                        alt="Message Icon" />Message</a>
+                            </div>
+                            <div class="col-3 col-sm-3 profile-icon">
+                                <a href="#" id="promail"><img src="images/email-icon.png" alt="Email Icon" />Email</a>
+                            </div>
+                            <div class="col-3 col-sm-3 profile-icon">
+                                <a href="#" id="prowebsite" target="_blank"><img src="images/website-icon.png"
+                                        alt="Website Icon" />Website</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile_view_resume">
+                        <div class="row col-12 mt-4 m-auto">
+                            <div class="col-6 col-sm-6">
+                                <a onclick="viewResume()" class="view_resume">View Resume</a> 
+                            </div>
+                            <div class="col-6 col-sm-6">
+                                <a href="#" id="mail-res" onclick="mailResume()" class="view_resume">Email Resume</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile_status">
+                <div class="profile_status_menu text-center">
+                    <ul>
+                        <li>Type<br><span id="protype"></span></li>
+                        <li>Status<br><span id="prostatus"></span></li>
+                        <li>Job Cd<br><span id="projobcd"></span></li>
+                        <li>Skill<br><span id="proskill"></span></li>
+                        <li>Industry<br><span id="proindustry"></span></li>
+                    </ul>
+                </div>
+                <div class="profile_status_menu">
+                    <h5>Key Words</h5>
+                    <p id="prokeyword"></p>
+                </div>
+                <div class="profile_status_menu">
+                    <h5>Job Tittle</h5>
+                    <p id="projobtitle"></p>
+                </div>
+                <div class="profile_status_menu">
+                    <h5>Current Company</h5>
+                    <p id="procurrcompany"></p>
+                </div>
+                <div class="profile_status_menu">
+                    <h5>Record Date</h5>
+                    <p id="prorecorddate"></p>
+                </div>
+                <div class="profile_part">
+                    <div class="row">
+                        <div class="col-6 col-sm-6">
+                            <div class="">
+                                <h5>Home</h5>
+                                <p id="prohome"></p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-6">
+                            <div class="">
+                                <h5>Mobile</h5>
+                                <p id="promobile"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile_part">
+                    <div class="row">
+                        <div class="col-6 col-sm-6">
+                            <div class="">
+                                <h5>Public Work</h5>
+                                <p id="propublicwork"></p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-6">
+                            <div class="">
+                                <h5>Private Work</h5>
+                                <p id="proprivatework"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile_status_menu">
+                    <h5>Email</h5>
+                    <p id="proemail"></p>
+                </div>
+                <div class="profile_status_menu">
+                    <h5>Address</h5>
+                    <p id="proaddress"></p>
+                </div>
+                <div class="profile_part">
+                    <div class="row">
+                        <div class="col-6 col-sm-6">
+                            <div class="">
+                                <h5>Salary</h5>
+                                <p id="prosalary"></p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-6">
+                            <div class="">
+                                <h5>Salary Date</h5>
+                                <p id="prosalarydate"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile_part">
+                    <div class="row">
+                        <div class="col-6 col-sm-6">
+                            <div class="">
+                                <h5>Relocation</h5>
+                                <p id="prorelocation"></p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-6">
+                            <div class="">
+                                <h5>Is Citizen</h5>
+                                <p id="procitizen"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile_part">
+                    <div class="row">
+                        <div class="col-4 col-sm-4">
+                            <div class="">
+                                <h5>Desired Location</h5>
+                                <p id="dloc"></p>
+                            </div>
+                        </div>
+                        <div class="col-4 col-sm-4">
+                            <div class="">
+                                <h5>Desired Position</h5>
+                                <p id="dpos"></p>
+                            </div>
+                        </div>
+                        <div class="col-4 col-sm-4">
+                            <div class="">
+                                <h5>Desired Salary</h5>
+                                <p id="dsal"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile_part">
+                    <div class="row">
+                        <div class="col-6 col-sm-6">
+                            <div class="">
+                                <h5>Degree of Year</h5>
+                                <p id="doyear"></p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-6">
+                            <div class="">
+                                <h5>Exp. From Year</h5>
+                                <p id="efyear"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile_status_menu">
+                    <h5>Recruiter</h5>
+                    <p id="prorecruiter"></p>
+                </div>
+                <div class="profile_status_menu note_heading">
+                    <h5><b>Notes</b></h5>
+                </div>
+                <div class="profile_date" id="notedata">
+                    <!-- apend notes here -->
+                </div>
+            </div>
+            <!-- sign off button -->
+            <div class="sign_off">
+                <a href="#" class="sign_btn" data-bs-toggle="modal" data-bs-target="#signOff">Sign Off</a>
+            </div>
+            <!-- sign off button -->
+
+            <!-- back button -->
+            <div class="back-off">
+                <a onclick="backFromProfile()" class="sign_btn"><i class="fa fa-arrow-left"></i></a>
+            </div>
+            <!-- back button -->
+
+            <!-- The Sign Off Modal -->
+            <div class="modal fade" id="signOff">
+                <div
+                    class="modal-dialog modal-dialog modal-dialog-centered modal_sign_popup modal-dialog modal-sm text-center">
+                    <div class="modal-content">
+                        <!-- Modal body -->
+                        <div class="modal_sign_body">
+                            <h2>Warning?</h2>
+                            <p>Are you sure for Logout from<br> Gopher Companion?</p>
+                            <div class="button_add">
+                                <a href="#" onclick="signOff()">Sign Off</a>
+                                <a href="#" data-bs-toggle="modal">Continue</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- The Error Modal -->
+    <div class="modal fade" id="errorModal">
+        <div class="modal-dialog modal-dialog modal-dialog-centered modal_sign_popup modal-dialog modal-sm text-center">
+            <div class="modal-content">
+                <!-- Modal body -->
+                <div class="modal_error_body">
+                    <p id="error-msg"></p>
+                    <div class="button_add">
+                        <a href="#" data-bs-dismiss="modal">OK</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Email Resume -->
+    <div class="modal fade" id="emailResume">
+        <div class="modal-dialog modal-dialog modal-dialog-centered modal_sign_popup modal-dialog">
+            <div class="modal-content">
+                <!-- Modal body -->
+                <div class="modal_sign_body send_mail_popup">
+                    <!-- back button -->
+                    <div class="back-off back_off_right">
+                        <a href="#" data-bs-dismiss="modal" class="sign_btn"><i class="fa fa-arrow-left"></i></a>
+                    </div>
+                    <!-- back button -->
+                    <h2 class="text-center">Select person to send mail</h2>
+                    <div class="form-check mt-4" id="userDiv">
+                    </div>
+                    <div class="button_add_share text-center m-auto col-4 col-lg-4">
+                        <div class="row">
+                            <div class="col-6 col-sm-6">
+                                <a href="#" class="btn_share" data-bs-dismiss="modal"><img src="images/close-btn.png"
+                                        alt="Close" /></a>
+                            </div>
+                            <div class="col-6 col-sm-6">
+                                <a href="#" id="emailSend" class="btn_share"><img src="images/send-message.png"
+                                        alt="Mail-Share" /></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Error Modal -->
+        <div class="modal fade" id="newErrorModal">
+            <div
+                class="modal-dialog modal-dialog modal-dialog-centered modal_sign_popup modal-dialog modal-sm text-center">
+                <div class="modal-content">
+                    <div class="modal_error_body">
+                        <p id="error-msg-new"></p>
+                        <div class="button_add">
+                            <a href="#" data-bs-dismiss="modal">OK</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- The sms Modal -->
+    <div class="modal" id="smsModal">
+        <div class="modal-dialog modal_width modal-dialog-centered">
+            <div class="modal-content">
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="modal_api">
+                        <div class="enter_api">
+                            <form>
+                                <input type="text" class="form-control" id="smsBody" placeholder="Enter message "
+                                    aria-describedby="emailHelp">
+                            </form>
+                            <div class="gopher_pop_btn mt-2">
+                                <div class="row col-12 m-auto">
+                                    <div class="col-6 mb-6">
+                                        <a class="btn_style_pop" id="sendSms" onclick="sendSms()">Send SMS</a>
+                                    </div>
+                                    <div class="col-6 mb-6">
+                                        <a href="#" class="btn_style_pop" data-bs-dismiss="modal">Cancel</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- The Error Modal -->
+                    <div class="modal fade" id="errorSmsModal">
+                        <div
+                            class="modal-dialog modal-dialog modal-dialog-centered modal_sign_popup modal-dialog modal-sm text-center">
+                            <div class="modal-content">
+                                <!-- Modal body -->
+                                <div class="modal_error_body">
+                                    <p id="error-msg-sms"></p>
+                                    <div class="button_add">
+                                        <a href="#" data-bs-dismiss="modal">OK</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- view resume modal -->
+    <div class="modal fade" id="viewResume">
+        <div class="modal-dialog modal-dialog modal-dialog-centered modal_sort_list">
+            <div class="modal-content">
+                <!-- Modal body -->
+                <div class="modal-body p-0">
+                    <div class="sort_popup text-center iframe-resume">
+                        <iframe id="iframe" src="" height="500" width="100%"></iframe>
+                        <a href="#" class="btn_style_pop" data-bs-dismiss="modal">Close</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./js/index.js"></script>
+
+</html>
