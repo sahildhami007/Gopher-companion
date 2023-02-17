@@ -626,6 +626,11 @@ const remove = (item) => {
 
 const searchfromHotlist = () => {
     if (searchdata) {
+        localStorage.removeItem("searchResult")
+        const oldUserList = document.querySelectorAll('#userList');
+        for (let i = 0; i < oldUserList?.length; i++) {
+            oldUserList[i].remove();
+        }
         const search = document.getElementById("searchInput");
         search.value = searchdata;
         loadMore = true;
@@ -825,7 +830,7 @@ const initSearch = () => {
     let main_section = document.getElementById("main_section").offsetHeight;
     let search_topbar = document.getElementById("search_topbar").offsetHeight;
     let gopher_footer = document.getElementById("gopher_footer").offsetHeight;
-    let middle = main_section - (search_topbar + gopher_footer + 10);
+    let middle = main_section - (search_topbar + gopher_footer);
     document.getElementById("middleSection").style.height = middle + "px";
     if (userData) {
         const oldUserList = document.querySelectorAll('#userList');
