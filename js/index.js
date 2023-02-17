@@ -9,7 +9,6 @@ const searchResult = JSON.parse(localStorage.getItem("searchResult"));
 const loader = document.querySelector("#main-loader");
 let x = 1;
 let loadMore = false;
-// if (searchResult) { loadMore = true; }
 
 const hideSpinner = () => {
     loader.style.display = "none";
@@ -42,7 +41,7 @@ const help = () => {
 const urlConnection = () => {
     const url = document.getElementById("inputUrl")?.value;
     if (!url || url.trim() === "") {
-        if(conSucessdb?.success === true){
+        if (conSucessdb?.success === true) {
             localStorage?.removeItem("connection")
         }
         document.getElementById("conmobileVersion").innerHTML = mobileVersion;
@@ -313,7 +312,15 @@ const searchOff = () => {
 
 }
 
+const setHeight = () => {
+    let main_section = document.getElementById("main_section").offsetHeight;
+    let search_topbar = document.getElementById("search_topbar").offsetHeight;
+    let middle = main_section - (search_topbar + 10);
+    document.getElementById("middle_section").style.height = middle + "px";
+}
+
 const initLastNote = () => {
+    setHeight();
     let data = searchResult.filter(item => item?.Notes[0]?.Ntpdt)
     let recentNotes = data.sort(function (a, b) {
         return new Date(b.Notes[0]?.Ntpdt) - new Date(a.Notes[0]?.Ntpdt);
@@ -347,6 +354,7 @@ const initLastNote = () => {
 }
 
 const initLastName = () => {
+    setHeight();
     let lastNameSort = searchResult.sort(function (a, b) { return (a.Proln > b.Proln ? 1 : (a.Proln === b.Proln ? 0 : -1)) })
     if (userData) {
         if (lastNameSort?.length) {
@@ -376,6 +384,7 @@ const initLastName = () => {
 }
 
 const initRecordAgeDate = () => {
+    setHeight();
     let recordAgeSort = searchResult.sort(function (a, b) {
         return new Date(b.Prodt) - new Date(a.Prodt);
     });
@@ -407,6 +416,7 @@ const initRecordAgeDate = () => {
 }
 
 const initRecordUpdateDate = () => {
+    setHeight();
     let recordUpdateSort = searchResult.sort(function (a, b) {
         return new Date(b.ProStamp) - new Date(a.ProStamp);
     });
@@ -494,6 +504,7 @@ const sortByZipCode = () => {
 }
 
 const initZipCode = () => {
+    setHeight();
     if (userData) {
         if (nearestProfileSort?.length) {
             nearestProfileSort?.filter(item => item?.ProDistance != null)?.map((item) => {
@@ -572,6 +583,12 @@ const saveToHotlist = () => {
 }
 
 const hotlistAppend = () => {
+    let main_section = document.getElementById("main_section").offsetHeight;
+    let gopher_footer = document.getElementById("gopher_footer").offsetHeight;
+    let position_top = document.getElementById("position_top").offsetHeight;
+    let middle = (main_section - (gopher_footer + 10)) - position_top;
+    document.getElementById("middle_section").style.height = middle + "px";
+
     hotlistArray?.map(item => {
         const ul = document.getElementById("hotlistData");
         const li = document.createElement('li');
@@ -803,7 +820,13 @@ const appendResult = () => {
     })
 }
 
+
 const initSearch = () => {
+    let main_section = document.getElementById("main_section").offsetHeight;
+    let search_topbar = document.getElementById("search_topbar").offsetHeight;
+    let gopher_footer = document.getElementById("gopher_footer").offsetHeight;
+    let middle = main_section - (search_topbar + gopher_footer + 10);
+    document.getElementById("middleSection").style.height = middle + "px";
     if (userData) {
         const oldUserList = document.querySelectorAll('#userList');
         for (let i = 0; i < oldUserList?.length; i++) {

@@ -281,7 +281,7 @@ a {
 
 .middle_section {
     display: block;
-    height: 65vh;
+    /* height: 65vh; */
     width: 100%;
     overflow-y: scroll;
 }
@@ -776,7 +776,7 @@ a {
 
 .back-off {
     position: absolute;
-    top: 30px;
+    top: 25px;
     z-index: 1;
     left: 4%;
 }
@@ -947,7 +947,8 @@ a {
     width: 100%;
     height: 50px;
     display: block;
-    font-size: 19px;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 @media screen and (max-width: 1024px) and (min-width: 320px) {

@@ -29,28 +29,25 @@
 
 <body onload="initSearch(); searchfromHotlist()">
 	<main class="main_wrapper">
-
-		<section class="main_section">
+		<section class="main_section" id="main_section">
 			<!-- loader -->
 			<div class="main-section-spinner" id="main-loader">
 				<div class="spinner-border loader" role="status">
 					<span class="sr-only"></span>
 				</div>
 			</div>
-			<div class="search_topbar">
+			<div class="search_topbar" id="search_topbar">
 				<div class="search_topbar_heading">
 					<h2>Search</h2>
 					<div class="gopher_searchbar">
 						<i class="fa fa-search"></i>
 						<input type="text" class="form-control" placeholder="Search Gopher" id="searchInput"
 							onkeyup="searchChange()" />
-
 					</div>
 				</div>
 				<div class="search_clmn_icon mt-4">
 					<div class="row col-10 m-auto">
 						<div class="col-3 col-sm-3">
-
 							<!--data-bs-toggle="modal" data-bs-target="#addHotlist" -->
 							<a href="#" onclick="floppy()"><img src="images/save-btn.png" alt="Save Icon"
 									width="100%"></a>
@@ -72,7 +69,6 @@
 			</div>
 
 			<!-- Middle Section -->
-
 			<div class="middle_section" id="middleSection">
 				<ul id="dataid">
 					<!-- append li by func -->
@@ -86,9 +82,8 @@
 			</div>
 
 			<!-- footer start -->
-			<footer class="gopher_footer">
+			<footer class="gopher_footer" id="gopher_footer">
 				<!-- center box-->
-
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-4 col-sm-4 border-right">
@@ -114,8 +109,6 @@
 
 					</div>
 				</div>
-
-				<!-- footer end-->
 			</footer>
 
 			<!-- The Sign Off -->
@@ -136,24 +129,18 @@
 				</div>
 			</div>
 
-
 			<!-- sign off button -->
 			<div class="sign_off">
 				<a href="#" class="sign_btn" data-bs-toggle="modal" data-bs-target="#signOff">Sign Off</a>
 			</div>
 			<!-- sign off button -->
-
 		</section>
-
-	
 	</main>
 
 	<!-- The Modal first-->
-
 	<div class="modal" id="questionMark">
 		<div class="modal-dialog modal_width_connection modal-dialog-centered">
 			<div class="modal-content">
-
 				<!-- Modal body -->
 				<div class="modal-body">
 					<div class="modal_api_connected">
@@ -166,7 +153,6 @@
 								<li class=""><b>Your Mobile Phone Version is:</b> <span id="helpMobVersion"></span></li>
 								<li class="border_btm"><a data-bs-toggle="modal" data-bs-target="#helpCraousel" class="gopher_helpbtn">Help</a></li>
 							</ul>
-
 						</div>
 						<div class="enter_api_okbtn col-5 m-auto text-center">
 							<a href="#" class="contion_url_okbtn" data-bs-toggle="modal"
@@ -174,8 +160,6 @@
 						</div>
 					</div>
 				</div>
-
-
 			</div>
 		</div>
 	</div>
@@ -202,8 +186,6 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- ///////////////////// -->
 	<div class="container">
 	</div>
 
@@ -369,12 +351,7 @@
 											data-bs-target="#demo" data-bs-slide="next">
 											Next </button>
 									</div>
-
-
-
 								</div>
-
-
 							</div>
 						</div>
 					</div>

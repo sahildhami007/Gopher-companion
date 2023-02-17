@@ -28,17 +28,15 @@
 
 <body onload="hotlistAppend(); prj()">
     <main class="main_wrapper">
-
-        <section class="main_section">
+        <section class="main_section" id="main_section">
             <!-- loader -->
             <div class="main-section-spinner" id="main-loader">
                 <div class="spinner-border loader" role="status">
                     <span class="sr-only"></span>
                 </div>
             </div>
-
-            <div class="hotlist_tabs">
-                <div class="position_top">
+            <div class="hotlist_tabs" id="hotlist_tabs">
+                <div class="position_top" id="position_top">
                     <h1 class="text-center">Hotlist</h1>
                     <!-- Tab Nav -->
                     <div class="nav-wrapper position-relative mb-2 mt-4">
@@ -60,7 +58,7 @@
                 </div>
                 <!-- End of Tab Nav -->
                 <!-- Tab Content -->
-                <div class="middle_section">
+                <div class="middle_section" id="middle_section">
                     <div class="card border-0 hotlist_card">
                         <div class="card-body p-0">
                             <div class="tab-content" id="tabcontent1">
@@ -87,9 +85,7 @@
             </div>
             <!-- End of Tab Content -->
 
-
-
-            <footer class="gopher_footer">
+            <footer class="gopher_footer" id="gopher_footer">
                 <!-- center box-->
                 <div class="container-fluid">
                     <div class="row">
